@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>企業決算データポータル</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/company-themes.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="js/charts.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>
+                <i class="fa-solid fa-chart-pie fa-beat-fade"></i>
+                企業決算データポータル
+                <i class="fa-solid fa-chart-column fa-flip"></i>
+            </h1>
+            <div class="date-info">
+                <i class="fa-regular fa-calendar"></i>
+                最終更新日: 2025年3月14日
+            </div>
+        </header>
+
+        <section class="intro-section animate-fadeIn">
+            <h2 class="intro-title">
+                <i class="fa-solid fa-lightbulb fa-bounce"></i>
+                決算情報をグラフィックレコーディングで視覚化
+            </h2>
+            <p class="intro-text">
+                <i class="fa-solid fa-circle-info"></i>
+                各企業の決算データをグラフィックレコーディング風のインフォグラフィックで分かりやすく表示します。
+                財務情報や業績推移を<span class="highlight">直感的に理解</span>できるよう視覚化しています。
+            </p>
+            <p class="intro-text">
+                <i class="fa-solid fa-hand-pointer"></i>
+                各企業カードをクリックすると、詳細な決算情報ページに移動します。
+            </p>
+        </section>
+
+        <div class="search-section animate-fadeIn delay-1">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" class="search-input" placeholder="企業名で検索...">
+        </div>
+
+        <div class="companies-grid">
+            <!-- 大和ハウス工業 -->
+            <a href="companies/daiwa-house.html" class="company-card industry-manufacturing animate-fadeIn delay-3">
+                <div style="text-align: center; margin-bottom: 1rem;">
+                    <img src="images/daiwa-house-logo.png" alt="大和ハウス工業" style="height: 30px;">
+                </div>
+                <h3 class="company-name">大和ハウス工業</h3>
+                <div class="company-info">
+                    <i class="fa-solid fa-building"></i>
+                    建設業
+                </div>
+                <div class="company-info">
+                    <i class="fa-solid fa-yen-sign"></i>
+                    時価総額: <span class="highlight">2.6兆円</span>
+                </div>
+                <div class="company-info">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    決算期: 3月
+                </div>
+                <div class="company-info">
+                    <i class="fa-solid fa-chart-line"></i>
+                    前年比: <span class="highlight">+5.2%</span>
+                </div>
+                <div style="margin-top: 0.8rem;">
+                    <span class="tag"><i class="fa-solid fa-star"></i>注目</span>
+                    <span class="tag"><i class="fa-solid fa-arrow-trend-up"></i>成長</span>
+                </div>
+            </a>
+
+            <!-- 積水ハウス -->
+            <a href="companies/sekisui-house.html" class="company-card industry-tech animate-fadeIn delay-4">
+                <div style="text-align: center; margin-bottom: 1rem;">
+                    <img src="images/sekisui-house-logo.png" alt="積水ハウス" style="height: 30px;">
+                </div>
+                <h3 class="company-name">積水ハウス</h3>
+                <div class="company-info">
+                    <i class="fa-solid fa-building"></i>
+                    建設業（住宅）
+                </div>
+                <div class="company-info">
+                    <i class="fa-solid fa-yen-sign"></i>
+                    時価総額: <span class="highlight">2.0兆円</span>
+                </div>
+                <div class="company-info">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    決算期: 1月
+                </div>
+                <div class="company-info">
+                    <i class="fa-solid fa-chart-line"></i>
+                    前年比: <span class="highlight">+30.6%</span>
+                </div>
+                <div style="margin-top: 0.8rem;">
+                    <span class="tag"><i class="fa-solid fa-fire"></i>急成長</span>
+                    <span class="tag"><i class="fa-solid fa-globe"></i>海外展開</span>
+                </div>
+            </a>
+
+            <!-- 住友林業 -->
+            <a href="companies/sumitomo-forestry.html" class="company-card industry-manufacturing animate-fadeIn delay-5">
+                <div style="text-align: center; margin-bottom: 1rem;">
+                    <img src="images/sumitomo-forestry-logo.png" alt="住友林業" style="height: 30px;">
+                </div>
+                <h3 class="company-name">住友林業</h3>
+                <div class="company-info">
+                    <i class="fa-solid fa-building"></i>
+                    建設業（住宅・木材）
+                </div>
+                <div class="company-info">
+                    <i class="fa-solid fa-yen-sign"></i>
+                    時価総額: <span class="highlight">9,200億円</span>
+                </div>
+                <div class="company-info">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    決算期: 12月
+                </div>
+                <div class="company-info">
+                    <i class="fa-solid fa-chart-line"></i>
+                    前年比: <span class="highlight">+18.5%</span>
+                </div>
+                <div style="margin-top: 0.8rem;">
+                    <span class="tag"><i class="fa-solid fa-leaf"></i>環境</span>
+                    <span class="tag"><i class="fa-solid fa-globe"></i>海外展開</span>
+                </div>
+            </a>
+
+            <!-- 飯田グループホールディングス（企業Dを置き換え） -->
+            <a href="companies/iida-group-holdings.html" class="company-card industry-manufacturing animate-fadeIn delay-6">
+                <div style="text-align: center; margin-bottom: 1rem;">
+                    <img src="images/iida-group-holdings-logo.png" alt="飯田グループホールディングス" style="height: 30px;">
+                </div>
+                <h3 class="company-name">飯田グループHD</h3>
+                <div class="company-info">
+                    <i class="fa-solid fa-building"></i>
+                    不動産業（持株会社）
+                </div>
+                <div class="company-info">
+                    <i class="fa-solid fa-yen-sign"></i>
+                    時価総額: <span class="highlight">1.1兆円</span>
+                </div>
+                <div class="company-info">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    決算期: 3月
+                </div>
+                <div class="company-info">
+                    <i class="fa-solid fa-chart-line"></i>
+                    前年比: <span class="highlight">+2.3%</span>
+                </div>
+                <div style="margin-top: 0.8rem;">
+                    <span class="tag"><i class="fa-solid fa-home"></i>戸建分譲</span>
+                    <span class="tag"><i class="fa-solid fa-building-columns"></i>持株会社</span>
+                </div>
+            </a>
+
+            <!-- 企業E -->
+            <a href="#" class="company-card industry-healthcare animate-fadeIn delay-7">
+                <i class="fa-solid fa-hospital company-icon fa-pulse"></i>
+                <h3 class="company-name">企業E</h3>
+                <div class="company-info">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                    医療・ヘルスケア
+                </div>
+                <div class="company-info">
+                    <i class="fa-solid fa-yen-sign"></i>
+                    時価総額: <span class="highlight">準備中</span>
+                </div>
+                <div class="company-info">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    決算期: 準備中
+                </div>
+                <div class="company-info">
+                    <i class="fa-solid fa-chart-line"></i>
+                    前年比: <span class="highlight">準備中</span>
+                </div>
+                <div style="margin-top: 0.8rem;">
+                    <span class="tag"><i class="fa-solid fa-flask"></i>近日公開</span>
+                </div>
+            </a>
+
+            <!-- 企業F -->
+            <a href="#" class="company-card industry-manufacturing animate-fadeIn delay-8">
+                <i class="fa-solid fa-bolt company-icon fa-shake"></i>
+                <h3 class="company-name">企業F</h3>
+                <div class="company-info">
+                    <i class="fa-solid fa-car"></i>
+                    自動車・製造
+                </div>
+                <div class="company-info">
+                    <i class="fa-solid fa-yen-sign"></i>
+                    時価総額: <span class="highlight">準備中</span>
+                </div>
+                <div class="company-info">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    決算期: 準備中
+                </div>
+                <div class="company-info">
+                    <i class="fa-solid fa-chart-line"></i>
+                    前年比: <span class="highlight">準備中</span>
+                </div>
+                <div style="margin-top: 0.8rem;">
+                    <span class="tag"><i class="fa-solid fa-leaf"></i>近日公開</span>
+                </div>
+            </a>
+        </div>
+
+        <footer>
+            <p>© 2025 企業決算データポータル | 最新の企業財務情報をグラフィックレコーディングで視覚化</p>
+        </footer>
+    </div>
+</body>
+</html>
