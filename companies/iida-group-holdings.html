@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>飯田グループホールディングス - 決算データインフォグラフィック</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/company-themes.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="../js/charts.js" defer></script>
+    <style>
+        /* 飯田グループホールディングスのテーマ */
+        .theme-iida {
+            --color-primary: #0068b7; /* 青色 - ロゴに合わせて */
+            --color-secondary: #004b83;
+            --color-accent: #4dac26; /* 緑色 - アクセントカラー */
+            --color-dark: #002e50;
+            --color-light: #f4f8fc;
+        }
+
+        .theme-iida header::before {
+            content: '\f1ad'; /* ビルアイコン */
+        }
+
+        .theme-iida .company-info-card::before {
+            content: '\f015'; /* 家アイコン */
+        }
+
+        .theme-iida .future-outlook::before {
+            content: '\f085';
+        }
+
+        .theme-iida .segment-circle {
+            background: conic-gradient(
+                #0068b7 0% 56%, 
+                #4dac26 56% 78%, 
+                #3498db 78% 88%, 
+                #e67e22 88% 95%,
+                #e74c3c 95% 100%
+            );
+        }
+
+        /* 背景パターンカラーを企業テーマに合わせる */
+        .theme-iida {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%230068b7' fill-opacity='0.05' d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z'%3E%3C/path%3E%3C/svg%3E");
+        }
+        
+        /* グループ会社別詳細のフォント調整 */
+        .revenue-year {
+            font-size: 0.85rem;
+            width: 85px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        /* グループ成長率テーブルのスタイル */
+        .group-performance-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .group-performance-table th, 
+        .group-performance-table td {
+            padding: 0.5rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .group-performance-table th {
+            background-color: rgba(0, 104, 183, 0.1);
+            color: var(--color-primary);
+            font-weight: bold;
+        }
+        
+        .group-performance-table tr:hover {
+            background-color: rgba(0, 104, 183, 0.05);
+        }
+    </style>
+</head>
+<body class="theme-iida">
+    <div class="container">
+        <a href="../index.html" class="back-link">
+            <i class="fa-solid fa-arrow-left"></i>
+            トップページに戻る
+        </a>
+
+        <header>
+            <h1>
+                <img src="../images/iida-group-holdings-logo.png" alt="飯田グループホールディングス" style="height: 40px; margin-right: 15px;">
+                決算データ
+            </h1>
+            <div class="date-info">
+                <i class="fa-regular fa-calendar"></i>
+                2024年9月期 中間決算発表
+            </div>
+        </header>
+
+        <section class="company-overview">
+            <div class="company-info-card animate-fadeIn">
+                <h2 class="card-title">
+                    <i class="fa-solid fa-building fa-bounce"></i>
+                    企業概要
+                </h2>
+                <div class="info-row">
+                    <div class="info-label">
+                        <i class="fa-solid fa-tag"></i>
+                        業種
+                    </div>
+                    <div class="info-value">不動産業（持株会社）</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">
+                        <i class="fa-solid fa-location-dot"></i>
+                        本社
+                    </div>
+                    <div class="info-value">東京都武蔵野市</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">
+                        <i class="fa-solid fa-users"></i>
+                        従業員数
+                    </div>
+                    <div class="info-value">約20,000名（連結）</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">
+                        <i class="fa-solid fa-globe"></i>
+                        グループ会社
+                    </div>
+                    <div class="info-value">一建設、飯田産業、東栄住宅 他</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">
+                        <i class="fa-solid fa-yen-sign"></i>
+                        時価総額
+                    </div>
+                    <div class="info-value"><span class="highlight">約1.1兆円</span></div>
+                </div>
+            </div>
+
+            <div class="company-info-card animate-fadeIn delay-1">
+                <h2 class="card-title">
+                    <i class="fa-solid fa-chart-pie fa-spin"></i>
+                    財務ハイライト
+                </h2>
+                <div class="info-row">
+                    <div class="info-label">
+                        <i class="fa-solid fa-coins"></i>
+                        売上収益
+                    </div>
+                    <div class="info-value">6,871億円 <span class="highlight">+2.3%</span></div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">
+                        <i class="fa-solid fa-sack-dollar"></i>
+                        営業利益
+                    </div>
+                    <div class="info-value">379億円 <span class="highlight">+3.3%</span></div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">
+                        <i class="fa-solid fa-piggy-bank"></i>
+                        税引前利益
+                    </div>
+                    <div class="info-value">341億円 <span class="highlight">-4.2%</span></div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">
+                        <i class="fa-solid fa-percent"></i>
+                        営業利益率
+                    </div>
+                    <div class="info-value">5.5% <span class="highlight">+0.1pt</span></div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">
+                        <i class="fa-solid fa-hand-holding-dollar"></i>
+                        配当金
+                    </div>
+                    <div class="info-value">45円/株 <span class="highlight">±0円</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="financial-highlights">
+            <div class="highlight-card animate-fadeIn delay-2">
+                <i class="fa-solid fa-chart-line highlight-icon fa-beat"></i>
+                <h3 class="highlight-title">売上収益成長率</h3>
+                <div class="highlight-value">2.3%</div>
+                <div class="highlight-change positive">
+                    <i class="fa-solid fa-arrow-up"></i>
+                    前年同期比
+                </div>
+            </div>
+
+            <div class="highlight-card animate-fadeIn delay-2">
+                <i class="fa-solid fa-coins highlight-icon fa-flip"></i>
+                <h3 class="highlight-title">営業利益率</h3>
+                <div class="highlight-value">5.5%</div>
+                <div class="highlight-change positive">
+                    <i class="fa-solid fa-arrow-up"></i>
+                    前年比 +0.1pt
+                </div>
+            </div>
+
+            <div class="highlight-card animate-fadeIn delay-2">
+                <i class="fa-solid fa-rotate highlight-icon fa-spin"></i>
+                <h3 class="highlight-title">自己資本比率</h3>
+                <div class="highlight-value">53.4%</div>
+                <div class="highlight-change negative">
+                    <i class="fa-solid fa-arrow-down"></i>
+                    前期末比 -0.3pt
+                </div>
+            </div>
+
+            <div class="highlight-card animate-fadeIn delay-2">
+                <i class="fa-solid fa-hand-holding-dollar highlight-icon fa-bounce"></i>
+                <h3 class="highlight-title">一株当たり利益</h3>
+                <div class="highlight-value">84.36円</div>
+                <div class="highlight-change negative">
+                    <i class="fa-solid fa-arrow-down"></i>
+                    前年同期比 -4.0%
+                </div>
+            </div>
+        </section>
+
+        <section class="graphs-section">
+            <div class="graph-card animate-fadeIn delay-3">
+                <h3 class="graph-title">
+                    <i class="fa-solid fa-chart-column fa-shake"></i>
+                    売上収益推移
+                </h3>
+                <p>過去4期間の売上収益推移（単位：億円）</p>
+                <div class="graph-container">
+                    <div class="revenue-graph">
+                        <div class="revenue-bar">
+                            <div class="revenue-year">
+                                <i class="fa-solid fa-calendar-days"></i>
+                                2021年度
+                            </div>
+                            <div class="revenue-bar-fill" style="width: 95%;">13,450億円</div>
+                        </div>
+                        <div class="revenue-bar">
+                            <div class="revenue-year">
+                                <i class="fa-solid fa-calendar-days"></i>
+                                2022年度
+                            </div>
+                            <div class="revenue-bar-fill" style="width: 90%;">14,100億円</div>
+                        </div>
+                        <div class="revenue-bar">
+                            <div class="revenue-year">
+                                <i class="fa-solid fa-calendar-days"></i>
+                                2023年度
+                            </div>
+                            <div class="revenue-bar-fill" style="width: 95%;">14,391億円</div>
+                        </div>
+                        <div class="revenue-bar">
+                            <div class="revenue-year">
+                                <i class="fa-solid fa-calendar-days"></i>
+                                2024年度(予想)
+                            </div>
+                            <div class="revenue-bar-fill" style="width: 100%;">14,800億円</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="graph-card animate-fadeIn delay-4">
+                <h3 class="graph-title">
+                    <i class="fa-solid fa-percent fa-flip"></i>
+                    営業利益率推移
+                </h3>
+                <p>過去4期間の営業利益率の推移（単位：％）</p>
+                <div class="graph-container">
+                    <div class="profit-chart">
+                        <div class="profit-bar" style="height: 140px;" data-value="8.1%" data-year="2021"></div>
+                        <div class="profit-bar" style="height: 150px;" data-value="7.2%" data-year="2022"></div>
+                        <div class="profit-bar" style="height: 165px;" data-value="7.5%" data-year="2023"></div>
+                        <div class="profit-bar" style="height: 175px;" data-value="8.2%" data-year="2024予"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="graph-card animate-fadeIn delay-5">
+                <h3 class="graph-title">
+                    <i class="fa-solid fa-chart-line fa-shake"></i>
+                    四半期業績推移
+                </h3>
+                <p>2024年度上半期実績と通期予想（単位：億円）</p>
+                <div class="graph-container">
+                    <!-- 棒グラフ形式に変更 -->
+                    <div class="quarter-chart">
+                        <div class="quarter-labels">
+                            <div class="quarter-label">第1四半期</div>
+                            <div class="quarter-label">第2四半期</div>
+                            <div class="quarter-label">上半期実績</div>
+                            <div class="quarter-label">通期(予想)</div>
+                        </div>
+                        <div class="quarter-bars">
+                            <div class="quarter-bar-container">
+                                <div class="quarter-bar" style="height: 25%;">
+                                    <span class="quarter-value">3,100億円</span>
+                                </div>
+                            </div>
+                            <div class="quarter-bar-container">
+                                <div class="quarter-bar" style="height: 30%;">
+                                    <span class="quarter-value">3,771億円</span>
+                                </div>
+                            </div>
+                            <div class="quarter-bar-container">
+                                <div class="quarter-bar" style="height: 47%;">
+                                    <span class="quarter-value">6,871億円</span>
+                                </div>
+                            </div>
+                            <div class="quarter-bar-container">
+                                <div class="quarter-bar quarter-forecast" style="height: 100%;">
+                                    <span class="quarter-value">14,800億円</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="quarter-guide-lines">
+                            <div class="quarter-guide-line" style="bottom: 25%;">3,700億円</div>
+                            <div class="quarter-guide-line" style="bottom: 50%;">7,400億円</div>
+                            <div class="quarter-guide-line" style="bottom: 75%;">11,100億円</div>
+                            <div class="quarter-guide-line" style="bottom: 100%;">14,800億円</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="business-segments">
+            <div class="segment-card animate-fadeIn delay-3">
+                <h3 class="segment-title">
+                    <i class="fa-solid fa-pie-chart fa-spin"></i>
+                    セグメント別売上収益構成比（2024年9月期）
+                </h3>
+                <div class="segment-chart">
+                    <div class="segment-circle"></div>
+                    <div class="segment-inner-circle">
+                        <i class="fa-solid fa-home"></i>
+                        <span>売上収益</span>
+                        <span>6,871億円</span>
+                    </div>
+                </div>
+                <div class="segment-legend">
+                    <div class="segment-item">
+                        <div class="segment-color" style="background-color: var(--color-primary);"></div>
+                        <span>戸建分譲事業 85.3%</span>
+                    </div>
+                    <div class="segment-item">
+                        <div class="segment-color" style="background-color: var(--color-accent);"></div>
+                        <span>マンション分譲事業 4.5%</span>
+                    </div>
+                    <div class="segment-item">
+                        <div class="segment-color" style="background-color: #3498db;"></div>
+                        <span>請負工事事業 5.1%</span>
+                    </div>
+                    <div class="segment-item">
+                        <div class="segment-color" style="background-color: #e67e22;"></div>
+                        <span>その他 5.1%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="segment-card animate-fadeIn delay-4">
+                <h3 class="segment-title">
+                    <i class="fa-solid fa-chart-bar fa-shake"></i>
+                    グループ会社別売上収益詳細
+                </h3>
+                <div class="graph-container">
+                    <div class="revenue-graph">
+                        <div class="revenue-bar">
+                            <div class="revenue-year">
+                                <i class="fa-solid fa-building"></i>
+                                一建設G
+                            </div>
+                            <div class="revenue-bar-fill" style="width: 80%;">1,917億円</div>
+                        </div>
+                        <div class="revenue-bar">
+                            <div class="revenue-year">
+                                <i class="fa-solid fa-building"></i>
+                                飯田産業G
+                            </div>
+                            <div class="revenue-bar-fill" style="width: 60%;">1,230億円</div>
+                        </div>
+                        <div class="revenue-bar">
+                            <div class="revenue-year">
+                                <i class="fa-solid fa-building"></i>
+                                東栄住宅G
+                            </div>
+                            <div class="revenue-bar-fill" style="width: 48%;">958億円</div>
+                        </div>
+                        <div class="revenue-bar">
+                            <div class="revenue-year">
+                                <i class="fa-solid fa-building"></i>
+                                タクトホームG
+                            </div>
+                            <div class="revenue-bar-fill" style="width: 40%;">782億円</div>
+                        </div>
+                        <div class="revenue-bar">
+                            <div class="revenue-year">
+                                <i class="fa-solid fa-building"></i>
+                                アーネストワンG
+                            </div>
+                            <div class="revenue-bar-fill" style="width: 68%;">1,372億円</div>
+                        </div>
+                        <div class="revenue-bar">
+                            <div class="revenue-year">
+                                <i class="fa-solid fa-building"></i>
+                                アイディホーム
+                            </div>
+                            <div class="revenue-bar-fill" style="width: 22%;">446億円</div>
+                        </div>
+                        <div class="revenue-bar">
+                            <div class="revenue-year">
+                                <i class="fa-solid fa-building"></i>
+                                その他
+                            </div>
+                            <div class="revenue-bar-fill" style="width: 8%;">165億円</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- グループ会社別成長率と営業利益率のテーブル追加 -->
+                <h4 style="margin-top: 1.5rem; color: var(--color-primary); font-size: 1.1rem;">
+                    <i class="fa-solid fa-chart-simple" style="margin-right: 8px;"></i>
+                    グループ会社別成長率・営業利益率
+                </h4>
+                <table class="group-performance-table">
+                    <thead>
+                        <tr>
+                            <th>グループ会社</th>
+                            <th>前期比成長率</th>
+                            <th>営業利益率</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>一建設G</td>
+                            <td>+1.2%</td>
+                            <td>5.1%</td>
+                        </tr>
+                        <tr>
+                            <td>飯田産業G</td>
+                            <td>+3.5%</td>
+                            <td>4.8%</td>
+                        </tr>
+                        <tr>
+                            <td>東栄住宅G</td>
+                            <td>-1.3%</td>
+                            <td>4.5%</td>
+                        </tr>
+                        <tr>
+                            <td>タクトホームG</td>
+                            <td><span class="highlight">+8.3%</span></td>
+                            <td><span class="highlight">5.7%</span></td>
+                        </tr>
+                        <tr>
+                            <td>アーネストワンG</td>
+                            <td>+4.1%</td>
+                            <td>5.3%</td>
+                        </tr>
+                        <tr>
+                            <td>アイディホームG</td>
+                            <td>-2.5%</td>
+                            <td>3.9%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="future-outlook animate-fadeIn delay-5">
+            <h3 class="outlook-title">
+                <i class="fa-solid fa-lightbulb fa-beat"></i>
+                今後の見通しと経営戦略
+            </h3>
+            <div class="outlook-content">
+                <div class="outlook-point">
+                    <i class="fa-solid fa-arrow-trend-up outlook-icon"></i>
+                    <div class="outlook-text">
+                        2025年3月期の連結業績予想は、<strong>売上収益1兆4,800億円</strong>（前期比2.8％増）、<strong>営業利益1,200億円</strong>（前期比8.1％増）を見込んでいます。
+                    </div>
+                </div>
+                <div class="outlook-point">
+                    <i class="fa-solid fa-handshake outlook-icon"></i>
+                    <div class="outlook-text">
+                        2030年3月期をターゲットとした経営目標（<strong>オーガニック成長率4.0％、戸建分譲売上依存率70.0％、ROE10.0％以上</strong>）の達成に向けて、基本戦略である「コア事業の競争力強化」と「事業ポートフォリオの拡大」を推進しています。
+                    </div>
+                </div>
+                <div class="outlook-point">
+                    <i class="fa-solid fa-house outlook-icon"></i>
+                    <div class="outlook-text">
+                        戸建分譲事業においては、<strong>適正な在庫保有水準を維持することを優先</strong>し、エリアの特性や保有在庫状況のバランスを注視しながら、土地仕入・販売を行う等のきめ細かいエリア戦略を徹底しております。
+                    </div>
+                </div>
+                <div class="outlook-point">
+                    <i class="fa-solid fa-globe outlook-icon"></i>
+                    <div class="outlook-text">
+                        研究開発においては、<strong>「IGパーフェクトエコハウス」の実証実験開始</strong>予定など、先進的な技術開発に取り組んでいます。二酸化炭素と水から水素エネルギーを生成・貯蔵し、家庭の電力を賄う住宅の実用化を目指しています。
+                    </div>
+                </div>
+                <div class="outlook-point">
+                    <i class="fa-solid fa-leaf outlook-icon"></i>
+                    <div class="outlook-text">
+                        環境問題への対応として、<strong>SBT（Science Based Targets）</strong>を取得し、2050年までにScope 1、2及び3の温室効果ガス排出量の実質ゼロを目指しています。ZEH（ネット・ゼロ・エネルギー・ハウス）の普及も積極的に推進しています。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2025 飯田グループホールディングス株式会社 | データ出典：2024年9月期中間決算短信 <i class="fa-solid fa-file-lines"></i></p>
+        </footer>
+    </div>
+</body>
+</html>

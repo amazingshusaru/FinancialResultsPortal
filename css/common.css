@@ -1,0 +1,761 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+
+:root {
+    /* デフォルトカラー（トップページ用） */
+    --color-primary: #2E578C;
+    --color-secondary: #182D40;
+    --color-accent: #BF807A;
+    --color-dark: #592A2A;
+    --color-light: #F2F2F2;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Zen Kurenaido', sans-serif;
+    background-color: var(--color-light);
+    color: var(--color-secondary);
+    line-height: 1.6;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%232e578c' fill-opacity='0.05' d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* ナビゲーション */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    text-decoration: none;
+    color: var(--color-primary);
+    font-family: 'Kaisei Decol', serif;
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.back-link:hover {
+    transform: translateX(-5px);
+}
+
+.back-link i {
+    margin-right: 0.5rem;
+}
+
+/* ヘッダー */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px dashed var(--color-accent);
+    position: relative;
+}
+
+header::before {
+    content: '\f080';
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    font-size: 8rem;
+    color: rgba(46, 87, 140, 0.1);
+    top: -2rem;
+    left: -2rem;
+    z-index: -1;
+}
+
+h1 {
+    font-family: 'Kaisei Decol', serif;
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.1);
+}
+
+h1 i {
+    margin-right: 0.8rem;
+    color: var(--color-primary);
+    font-size: 2rem;
+}
+
+h1 i:last-child {
+    margin-left: 0.8rem;
+    margin-right: 0;
+}
+
+.date-info {
+    font-family: 'Yomogi', cursive;
+    color: var(--color-secondary);
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.date-info i {
+    margin-right: 0.5rem;
+    color: var(--color-accent);
+}
+
+/* カード共通スタイル */
+.card, .company-info-card, .highlight-card, .graph-card, .segment-card, .future-outlook, .intro-section {
+    background-color: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+.card-title, .graph-title, .segment-title, .outlook-title, .intro-title {
+    font-family: 'Kaisei Decol', serif;
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.card-title i, .graph-title i, .segment-title i, .outlook-title i, .intro-title i {
+    margin-right: 0.5rem;
+    color: var(--color-primary);
+}
+
+/* 会社概要 */
+.company-overview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.company-info-card {
+    flex: 1;
+    min-width: 280px;
+}
+
+.company-info-card::before {
+    content: '\f1ad';
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    font-size: 8rem;
+    color: rgba(46, 87, 140, 0.05);
+    bottom: -2rem;
+    right: -2rem;
+    z-index: 0;
+}
+
+.info-row, .data-row {
+    display: flex;
+    margin-bottom: 0.8rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.info-label, .data-label {
+    width: 120px;
+    font-weight: bold;
+    color: var(--color-secondary);
+    display: flex;
+    align-items: center;
+}
+
+.info-label i, .data-label i {
+    margin-right: 0.5rem;
+    color: var(--color-accent);
+    width: 20px;
+    text-align: center;
+}
+
+.info-value, .data-value {
+    flex: 1;
+}
+
+.highlight {
+    display: inline-block;
+    padding: 0 5px;
+    background: linear-gradient(120deg, rgba(191, 128, 122, 0.2), rgba(46, 87, 140, 0.2));
+    border-radius: 3px;
+    font-weight: bold;
+    position: relative;
+}
+
+.highlight::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-accent);
+}
+
+/* 財務ハイライト */
+.financial-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.highlight-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.highlight-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+}
+
+.highlight-icon {
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.highlight-title {
+    font-family: 'Kaisei Decol', serif;
+    font-size: 1.2rem;
+    color: var(--color-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.highlight-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+.highlight-change {
+    font-size: 1rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.highlight-change.positive {
+    background-color: rgba(39, 174, 96, 0.2);
+    color: #27ae60;
+}
+
+.highlight-change.negative {
+    background-color: rgba(231, 76, 60, 0.2);
+    color: #e74c3c;
+}
+
+.highlight-change i {
+    margin-right: 5px;
+}
+
+/* グラフ領域 */
+.graphs-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.graph-container {
+    width: 100%;
+    height: auto;
+    position: relative;
+    margin-top: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px dashed var(--color-primary);
+}
+
+/* 売上高グラフ */
+.revenue-graph {
+    margin-left: 80px;
+    position: relative;
+}
+
+.revenue-bar {
+    position: relative;
+    height: 40px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.revenue-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+    border-radius: 5px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+    color: white;
+    font-weight: bold;
+    transition: width 1s ease;
+}
+
+.revenue-year {
+    position: absolute;
+    left: -80px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    color: var(--color-secondary);
+    width: 75px;
+}
+
+.revenue-year i {
+    margin-right: 5px;
+    color: var(--color-accent);
+}
+
+/* 利益率グラフ */
+.profit-chart {
+    display: flex;
+    height: 250px;
+    justify-content: space-around;
+    align-items: flex-end;
+    padding-top: 20px;
+}
+
+.profit-bar {
+    width: 40px;
+    background: linear-gradient(180deg, var(--color-primary), var(--color-accent));
+    border-radius: 5px 5px 0 0;
+    position: relative;
+    transition: height 1s ease;
+}
+
+.profit-bar::before {
+    content: attr(data-value);
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+    color: var(--color-secondary);
+}
+
+.profit-bar::after {
+    content: attr(data-year);
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+    color: var(--color-secondary);
+}
+
+/* 四半期グラフ */
+.quarter-chart {
+    position: relative;
+    height: 300px;
+    margin: 20px 0;
+    padding: 0 30px;
+}
+
+.quarter-labels {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    position: absolute;
+    bottom: -30px;
+}
+
+.quarter-label {
+    font-weight: bold;
+    text-align: center;
+    width: 25%;
+    color: var(--color-secondary);
+}
+
+.quarter-bars {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.quarter-bar-container {
+    width: 60px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.quarter-bar {
+    width: 100%;
+    background: linear-gradient(180deg, var(--color-primary), var(--color-accent));
+    border-radius: 5px 5px 0 0;
+    position: relative;
+    transition: height 1s ease;
+    display: flex;
+    justify-content: center;
+}
+
+.quarter-forecast {
+    background: linear-gradient(180deg, rgba(46, 87, 140, 0.7), rgba(191, 128, 122, 0.7));
+    border: 2px dashed var(--color-primary);
+}
+
+.quarter-value {
+    position: absolute;
+    top: -25px;
+    font-weight: bold;
+    color: var(--color-primary);
+    white-space: nowrap;
+}
+
+.quarter-guide-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.quarter-guide-line {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    border-top: 1px dashed rgba(46, 87, 140, 0.3);
+    font-size: 0.8rem;
+    color: var(--color-secondary);
+    padding-left: 5px;
+}
+
+/* セグメント領域 */
+.business-segments {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.segment-chart {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 1.5rem;
+}
+
+.segment-circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(
+        var(--color-primary) 0% 30%, 
+        var(--color-accent) 30% 55%, 
+        #3498db 55% 70%, 
+        #e67e22 70% 85%,
+        #e74c3c 85% 100%
+    );
+}
+
+.segment-inner-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.segment-inner-circle span {
+    font-weight: bold;
+    color: var(--color-primary);
+}
+
+.segment-inner-circle i {
+    font-size: 2rem;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+.segment-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: center;
+}
+
+.segment-item {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+}
+
+.segment-color {
+    width: 15px;
+    height: 15px;
+    border-radius: 3px;
+    margin-right: 5px;
+}
+
+/* 将来見通し */
+.future-outlook::before {
+    content: '\f0eb';
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    font-size: 8rem;
+    color: rgba(46, 87, 140, 0.05);
+    bottom: -2rem;
+    right: -2rem;
+    z-index: 0;
+}
+
+.outlook-point {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.outlook-icon {
+    font-size: 1.2rem;
+    color: var(--color-accent);
+    margin-right: 0.8rem;
+    transform: translateY(3px);
+}
+
+.outlook-text {
+    flex: 1;
+}
+
+.outlook-text strong {
+    color: var(--color-primary);
+}
+
+/* トップページ用スタイル */
+.search-section {
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.8rem 1rem 0.8rem 3rem;
+    border: 2px solid var(--color-primary);
+    border-radius: 30px;
+    font-family: 'Zen Kurenaido', sans-serif;
+    font-size: 1rem;
+    background-color: white;
+    outline: none;
+    transition: box-shadow 0.3s ease;
+}
+
+.search-input:focus {
+    box-shadow: 0 0 0 3px rgba(46, 87, 140, 0.2);
+}
+
+.search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-primary);
+    font-size: 1.1rem;
+}
+
+.companies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.company-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+}
+
+.company-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.company-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--color-primary);
+    width: 40px;
+    height: 40px;
+    border-radius: 0 0 0 40px;
+    z-index: 0;
+}
+
+.company-card::after {
+    content: '\f054';
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    color: white;
+    font-size: 0.8rem;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+.company-card:hover::after {
+    transform: translateX(3px);
+}
+
+.company-icon {
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.company-card:hover .company-icon {
+    transform: scale(1.1);
+}
+
+.company-name {
+    font-family: 'Kaisei Decol', serif;
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    font-weight: bold;
+    color: var(--color-primary);
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.company-name::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: var(--color-accent);
+    transition: width 0.3s ease;
+}
+
+.company-card:hover .company-name::after {
+    width: 100%;
+}
+
+.tag {
+    display: inline-block;
+    background-color: var(--color-light);
+    padding: 4px 8px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.tag i {
+    margin-right: 3px;
+    color: var(--color-primary);
+}
+
+/* フッター */
+footer {
+    margin-top: 3rem;
+    text-align: center;
+    padding: 1rem;
+    border-top: 2px dashed var(--color-accent);
+    font-size: 0.9rem;
+    color: var(--color-secondary);
+    position: relative;
+}
+
+footer::before {
+    content: '\f15c';
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    font-size: 3rem;
+    color: rgba(46, 87, 140, 0.1);
+    top: -1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .date-info {
+        margin-top: 1rem;
+    }
+
+    .company-overview {
+        flex-direction: column;
+    }
+
+    .segment-chart {
+        width: 150px;
+        height: 150px;
+    }
+
+    .segment-inner-circle {
+        width: 90px;
+        height: 90px;
+    }
+    
+    .companies-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+}
