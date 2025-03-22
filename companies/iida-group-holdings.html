@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="../css/company-themes.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="../js/charts.js" defer></script>
+    <!-- Google Analyticsを動的に挿入するスクリプト -->
+    <script src="../js/analytics.js"></script>
     <style>
         /* 飯田グループホールディングスのテーマ */
         .theme-iida {
@@ -44,40 +46,6 @@
         /* 背景パターンカラーを企業テーマに合わせる */
         .theme-iida {
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%230068b7' fill-opacity='0.05' d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z'%3E%3C/path%3E%3C/svg%3E");
-        }
-        
-        /* グループ会社別詳細のフォント調整 */
-        .revenue-year {
-            font-size: 0.85rem;
-            width: 85px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-        
-        /* グループ成長率テーブルのスタイル */
-        .group-performance-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
-            font-size: 0.9rem;
-        }
-        
-        .group-performance-table th, 
-        .group-performance-table td {
-            padding: 0.5rem;
-            text-align: left;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
-        }
-        
-        .group-performance-table th {
-            background-color: rgba(0, 104, 183, 0.1);
-            color: var(--color-primary);
-            font-weight: bold;
-        }
-        
-        .group-performance-table tr:hover {
-            background-color: rgba(0, 104, 183, 0.05);
         }
     </style>
 </head>
@@ -424,53 +392,22 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- グループ会社別成長率と営業利益率のテーブル追加 -->
-                <h4 style="margin-top: 1.5rem; color: var(--color-primary); font-size: 1.1rem;">
-                    <i class="fa-solid fa-chart-simple" style="margin-right: 8px;"></i>
-                    グループ会社別成長率・営業利益率
-                </h4>
-                <table class="group-performance-table">
-                    <thead>
-                        <tr>
-                            <th>グループ会社</th>
-                            <th>前期比成長率</th>
-                            <th>営業利益率</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>一建設G</td>
-                            <td>+1.2%</td>
-                            <td>5.1%</td>
-                        </tr>
-                        <tr>
-                            <td>飯田産業G</td>
-                            <td>+3.5%</td>
-                            <td>4.8%</td>
-                        </tr>
-                        <tr>
-                            <td>東栄住宅G</td>
-                            <td>-1.3%</td>
-                            <td>4.5%</td>
-                        </tr>
-                        <tr>
-                            <td>タクトホームG</td>
-                            <td><span class="highlight">+8.3%</span></td>
-                            <td><span class="highlight">5.7%</span></td>
-                        </tr>
-                        <tr>
-                            <td>アーネストワンG</td>
-                            <td>+4.1%</td>
-                            <td>5.3%</td>
-                        </tr>
-                        <tr>
-                            <td>アイディホームG</td>
-                            <td>-2.5%</td>
-                            <td>3.9%</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div style="margin-top: 1rem;">
+                    <div class="info-row">
+                        <div class="info-label">
+                            <i class="fa-solid fa-arrow-trend-up"></i>
+                            前期比成長率
+                        </div>
+                        <div class="info-value">タクトホームG <span class="highlight">+8.3%</span></div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">
+                            <i class="fa-solid fa-percent"></i>
+                            最高営業利益率
+                        </div>
+                        <div class="info-value">タクトホームG <span class="highlight">5.7%</span></div>
+                    </div>
+                </div>
             </div>
         </section>
 
